@@ -4,46 +4,52 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Carnet de voyage</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
 	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+	<style>
+	.example_a {
+color: #fff !important;
+text-transform: uppercase;
+background: #ed3330;
+padding: 20px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+text-decoration: none;
+}
+.example_a:hover {
+background: #434343;
+letter-spacing: 1px;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.4s ease 0s;
+}
+	</style>
+	<body bgcolor="black">
 
-		<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
+	<h1 style="text-align:center;color:white">Carnet de voyage - Les nourritures</h1>
+	<h2 style="text-align:center;color:white">Humanité - Xavier JEANNENEY</h2>
+	
+	
+	<ul style="color:white">
+<li>Pour voyager dans mon carnet vous pouvez utiliser les flèches directionnelles</li>
+<li>Dans les déplacements horizontaux vous visiterez les différents mets que j'ai pu déguster</li>
+<li>Les deplacements verticaux vous permettront de mieux comprendre comment j'ai vécu cette dégustation</li>
+<li>En montant, on remonte dans la chaine d'engendrement des plats, ma réflexion se base sur la question :</li>
+</br><span style="font-style:italic">"Que faut-il pour produire cette chose ?"</span></br></br>
+<li>En descendant, vous descendrez dans la chaîne d'engendrement des plats, ma réflexion se base sur la question :</li>
+
+</br><span style="font-style:italic">"Qu'est-ce que cette chose engendre ?"</span></br>
+</ul>
+	
+	
+	</br>
+	</br>
+	</br>
+	<div class="button_cont" align="center"><a class="example_a" href="/humanite.html" target="_blank" rel="nofollow noopener">Demarrer le voyage</a></div>
 	</body>
 </html>
