@@ -119,7 +119,7 @@
 			touch: true,
 
 			// Loop the presentation
-			loop: true,
+			loop: false,
 
 			// Change the presentation direction to be RTL
 			rtl: false,
@@ -4904,7 +4904,7 @@
 		}
 
 	}
-	let tab = [0,4,3,3,6];
+	let tab = [0,4,4,3,5,6,3,3,3,2];
 	//Problème de retour arrière depuis la diapo du début
 	function navigateLeft() {
 
