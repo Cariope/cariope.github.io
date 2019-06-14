@@ -64,7 +64,7 @@
 			controlsBackArrows: 'faded',
 
 			// Display a presentation progress bar
-			progress: false,
+			progress: true,
 
 			// Display the page number of the current slide
 			// - true:    Show slide number
@@ -3905,11 +3905,11 @@
 				routes.left = true;
 				routes.right = true;
 			}
-			//JE COMMENTE
-			/*if( verticalSlides.length > 1 ) {
+
+			if( verticalSlides.length > 1 ) {
 				routes.up = true;
 				routes.down = true;
-			}*/
+			}
 		}
 
 		// Reverse horizontal controls for rtl
@@ -4904,37 +4904,35 @@
 		}
 
 	}
-	let tab = [0,4,4,3,5,6,3,3,3,2];
-	//Problème de retour arrière depuis la diapo du début
+
 	function navigateLeft() {
 
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
-				slide( indexh + 1, config.navigationMode === 'grid' ? indexv : 2 );
+				slide( indexh + 1, config.navigationMode === 'grid' ? indexv : undefined );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
-			slide( indexh - 1, tab[indexh - 1] );
+			slide( indexh - 1, config.navigationMode === 'grid' ? indexv : undefined );
 		}
 
 	}
-	
-	//GROSSE MODIFS
+
 	function navigateRight() {
 
 		hasNavigatedRight = true;
-		
+
 		// Reverse for RTL
 		if( config.rtl ) {
 			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
-				slide( indexh - 1, config.navigationMode === 'grid' ? indexv : 2 );
+				slide( indexh - 1, config.navigationMode === 'grid' ? indexv : undefined );
 			}
 		}
 		// Normal navigation
 		else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
-			slide( indexh + 1, tab[indexh + 1] );
+			slide( indexh + 1, config.navigationMode === 'grid' ? indexv : undefined );
 		}
 
 	}
