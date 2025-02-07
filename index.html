@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Spatial</title>
+    <link rel="stylesheet" href="./front/style.css">
+    <script src="./front/script.js"></script>
+</head>
+
+<body>
+    <div class="health-bar-container">
+        <div class="health-bar" id="health-bar"  style="display: none;"></div>
+    </div>
+    <div class="websocket-setup" id="websocket-setup">
+        <input type="text" id="websocket-url" placeholder="Enter WebSocket IP : 127.0.0.1:5000" />
+        <button id="connect-websocket">Connect</button>
+    </div>
+
+    <div class="config-form-container" id="config-form-container" style="display: none;">
+    <span id="connected-players">Connected Players: 0</span>
+        <form id="config-form" style="display: none;">
+            <label for="nb_players">Number of Players:</label>
+            <input type="number" id="nb_players" name="nb_players" required><br>
+
+            <label for="nb_target_missions">Number of Target Missions:</label>
+            <input type="number" id="nb_target_missions" name="nb_target_missions" required><br>
+
+            <label for="nb_solvable_missions">Number of Solvable Missions:</label>
+            <input type="number" id="nb_solvable_missions" name="nb_solvable_missions" required><br>
+
+            <label for="fail_health">Fail Health:</label>
+            <input type="number" id="fail_health" name="fail_health" required><br>
+
+            <label for="success_health">Success Health:</label>
+            <input type="number" id="success_health" name="success_health" required><br>
+
+            <label for="default_timeout">Default Timeout (seconds):</label>
+            <input type="number" id="default_timeout" name="default_timeout" required><br>
+
+            <label for="decrease_timeout">Decrease Timeout (by 30 seconds):</label>
+            <input type="number" id="decrease_timeout" name="decrease_timeout" required><br>
+
+
+            <button type="submit">Update Configuration</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="buttons" id="buttons">
+        </div>
+    </div>
+    <div class="tasks" id="tasks">
+    </div>
+
+    <script>
+        var url = ""
+
+        document.getElementById('config-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const config = {
+                nb_players: parseInt(document.getElementById('nb_players').value),
+                nb_target_missions: parseInt(document.getElementById('nb_target_missions').value),
+                nb_solvable_missions: parseInt(document.getElementById('nb_solvable_missions').value),
+                fail_health: parseInt(document.getElementById('fail_health').value),
+                success_health: parseInt(document.getElementById('success_health').value),
+                default_timeout: parseInt(document.getElementById('default_timeout').value),
+                decrease_timeout: parseInt(document.getElementById('decrease_timeout').value)
+            };
+
+            fetch("https://" + url + '/set_config', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(config)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        });
+
+        document.getElementById('connect-websocket').addEventListener('click', () => {
+            url = document.getElementById('websocket-url').value;
+            if (url == "") {
+                url = "cariope.alwaysdata.net";
+            }
+            connectWebSocket(url);
+            const element = document.getElementById(`websocket-setup`);
+            if (element) {
+                element.parentNode.removeChild(element);
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

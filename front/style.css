@@ -1,0 +1,282 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    margin-top: 5px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.button {
+    border: 1px solid #888;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.tasks {
+    background-color: #222;
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 2px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task {
+    margin: 5px 0;
+    /* Ajoute de l'espace entre les tâches */
+    position: relative;
+    width: 90%;
+}
+
+.progress-bar {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.progress {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.task-text {
+    position: relative;
+    text-align: center;
+    display: block;
+    z-index: 1;
+}
+
+@keyframes blink_fail {
+    0% {
+        background-color: red;
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: red;
+    }
+}
+
+.blink_fail {
+    animation: blink_fail 0.3s infinite;
+}
+
+@keyframes blink_success {
+    0% {
+        background-color: green;
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: green;
+    }
+}
+
+.blink_success {
+    animation: blink_success 0.3s infinite;
+}
+
+.health-bar-container {
+    width: 100%;
+    background-color: #444;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.health-bar {
+    width: 100%;
+    height: 20px;
+    background-color: green;
+    transition: width 0.5s;
+}
+
+@keyframes explosion {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(2);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.explosion {
+    position: fixed;
+    top: 20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, red, yellow, transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: explosion 3s forwards;
+    z-index: 1000;
+}
+
+.game-over {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: red;
+    text-shadow: 2px 2px 5px black;
+    z-index: 1001;
+    opacity: 0;
+    animation: fadeIn 2s forwards 1s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.websocket-setup {
+    margin: 20px;
+    text-align: center;
+}
+
+#websocket-url {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+#connect-websocket {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.config-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px;
+    text-align: left;
+}
+
+.config-container h2 {
+    margin-top: 0;
+}
+
+.config-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.config-container li {
+    margin: 5px 0;
+}
+
+.config-form-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px;
+    text-align: left;
+}
+
+.config-form-container h2 {
+    margin-top: 0;
+}
+
+.config-form-container label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.config-form-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #888;
+}
+
+.config-form-container button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.config-form-container button:hover {
+    background-color: #555;
+}
+
+.countdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
